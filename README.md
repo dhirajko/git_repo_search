@@ -29,4 +29,4 @@ Please make sure Node has been installed on the machine first!
 
 # Application link
 
- * [heroku ](https://git-repo-search-inline.herokuapp.com/)
+ * [Link](https://git-repo-search-inline.herokuapp.com/)

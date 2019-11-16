@@ -2,9 +2,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   height: auto;
-  margin: 5px;
+  margin: auto;
   align-content: center;
 }
 
@@ -52,4 +52,8 @@
   
   .btn-secondary{
     margin-top:10px;
+  }
+
+  .title{
+    font-family: 'Raleway', sans-serif;
   }

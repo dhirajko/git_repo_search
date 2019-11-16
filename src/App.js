@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Search from "./components/Search/search";
-import Repos from "./components/Repos/repos";
+import RepoList from "./components/Repos/List";
+
 import Display from "./components/Display/Display";
 import "./App.css";
 
@@ -10,46 +11,46 @@ class App extends Component {
     super(props);
     this.state = {
       data: null,
-      clickedRepoIndex: null
+      displayedRepo: null
     };
   }
 
   searchHandler = word => {
-    Axios.get(`https://api.github.com/legacy/repos/search/${word}`).then(
-      result => this.setState({ data: result.data.repositories })
-    );
+    Axios.get(
+      `https://api.github.com/legacy/repos/search/${word}`
+    ).then(result => this.setState({ data: result.data.repositories }));
   };
 
-  displayRepoHandler = a => {
-    console.log(a);
-    this.setState({ clickedRepoIndex: a });
+  displayRepoHandler = repo => {
+    this.setState({ displayedRepo: repo });
   };
 
   render() {
+    let { data, displayedRepo } = this.state;
     return (
       <div className="App">
-        <div className="searchDetail">
-        <div className='SearchInput'>
+        <div className=" d-flex justify-content-end">
           <Search searchItem={this.searchHandler} />
+        </div>
+        <div className="row mt-3">
+          <div className="col-md-6 ">
+            {data ? (
+              <RepoList
+                data={data}
+                displayRepoHandler={this.displayRepoHandler}
+              />
+            ) : (
+              ""
+            )}
           </div>
-          <div className='SearchResult'>
-          {this.state.data ? (
-            <Repos
-              data={this.state.data}
-              displayRepo={this.displayRepoHandler}
-            />
-          ) : (
-            ""
-          )}
+          <div className="col-md-6 px-3">
+            {this.state.displayedRepo ? (
+              <Display selectedRepo={displayedRepo} />
+            ) : (
+              ""
+            )}
           </div>
         </div>
-        {this.state.clickedRepoIndex || this.state.clickedRepoIndex === 0 ? (
-          <Display
-            displayedRepo={this.state.data[this.state.clickedRepoIndex]}
-          />
-        ) : (
-          ""
-        )}
       </div>
     );
   }

@@ -57,3 +57,8 @@
   .title{
     font-family: 'Raleway', sans-serif;
   }
+
+.searchBar{
+  position: absolute;
+  top: 40vh;
+}

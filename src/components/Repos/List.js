@@ -45,7 +45,7 @@ export default function RepoList(props) {
     createData(item.name, item.owner, "click here", item)
   );
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} className="mb-3">
       <div className={classes.tableWrapper}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

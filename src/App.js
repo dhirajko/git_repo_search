@@ -28,12 +28,15 @@ class App extends Component {
   render() {
     let { data, displayedRepo } = this.state;
     return (
-      <div className="App">
-        <div className=" d-flex justify-content-end">
-          <Search searchItem={this.searchHandler} />
+      <div className="container">
+        <div
+          className="d-flex justify-content-center"
+          style={{ width: "100%", position: "relative" }}
+        >
+          <Search data={data} searchItem={this.searchHandler} />
         </div>
         <div className="row mt-3">
-          <div className="col-md-6 ">
+          <div className="col-md-6">
             {data ? (
               <RepoList
                 data={data}
